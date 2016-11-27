@@ -1,0 +1,19 @@
+extends ../layout.jade
+
+block body
+  if user
+    if webcasts
+      h2 List of Coming Webcasts
+      ul
+        each webcast in webcasts
+          li
+            strong= webcast.title
+            br
+            = webcast.venue
+    else
+      p No webcast created yet
+
+    pre= webcast
+
+  else
+    | Please Login or creat an account.

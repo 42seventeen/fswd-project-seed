@@ -1,0 +1,45 @@
+extends ../layout.jade
+
+block body
+  if user
+    div
+      form(method="POST" action="/webcast/new" name="create-webcast" novalidate)
+        .form-group
+          label(for="title") Title
+          input.form-control#title(type="text" name="title" ng-model="webcast.title" required)
+        .form-group
+          label#webcastDate(for="webcastDate") Production Date
+            pre 2016-12-05
+          input.form-control(type="text" name="webcastDate" ng-model="webcast.webcastDate" required)
+        .form-group
+          label#venue(for="venue") Venue
+          input.form-control(type="text" name="venue" ng-model="webcast.venue")
+        .form-group
+          label#clientName(for="clientName") Client Name
+          input.form-control(type="text" name="clientName" ng-model="webcast.clientName")
+        .form-group
+          label#clientEmail(for="clientEmail") Client Email
+          input.form-control(type="text" name="clientEmail" ng-model="webcast.clientEmail")
+        .form-group
+          p Channel
+          .radio
+            label(for="channelOne")
+              input#channelOne(type='radio', name='channelID', value="1", ng-model="webcast.channelID", checked)
+              | Channel One
+          .radio
+            label(for="channelTwo")
+              input#channelTwo(type='radio', name='channelID', value="2", ng-model="webcast.channelID")
+              | Channel Two
+          .radio.disabled
+            label(for="channelThree")
+              input#channelThree(type='radio', name='channelID', value="3", ng-model="webcast.channelID")
+              | Channel Three
+        .form-group
+          label(for="UserId") UserId
+            input(type="text" name="UserId" value=user.id  ng-model="webcast.UserId" placeholder=user.id )
+        .form-group
+          button.btn.btn-default(type="submit") Create Webcast
+
+      pre webcast = {{ webcast | json }}
+  else
+    h1 Please login

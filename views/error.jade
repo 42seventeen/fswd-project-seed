@@ -2,6 +2,8 @@ extends ./layout.jade
 
 block body
   if user
-    | Hello #{user.username}!
+    | Hello #{user.name}.
   else
     | Hello world!
+
+    h2 Somthings is wrong.
