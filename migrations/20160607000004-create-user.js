@@ -1,6 +1,7 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
+    // Below should be a plural
     return queryInterface.createTable('Users', {
       id: {
         allowNull: false,
@@ -8,15 +9,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING,
-      },
       username: {
         type: Sequelize.STRING,
         unique: true
-      },
-      role: {
-        type: Sequelize.STRING
       },
       password: {
         type: Sequelize.STRING
