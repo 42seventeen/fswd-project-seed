@@ -1,4 +1,13 @@
 extends ../layout.jade
 
 block body
-  h1= title
+  if user
+    h1= user.username
+
+    pre= user.email
+    pre= user.webcasts
+    //- each user.webcast in user.webcasts
+    //-  li
+    //-    a(href="/webcast/" + user.webcast.id)= user.webcast.title
+  else
+    h2 Please register or log in.

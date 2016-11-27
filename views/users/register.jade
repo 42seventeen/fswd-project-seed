@@ -1,9 +1,12 @@
 extends ../layout.jade
 
 block body
+
+  h1 Create New User
+
   div
     form(method="POST" action="/users/register" name="registration" novalidate)
-      .form-group
+      //- .form-group
         label(for="name") Name
         input.form-control(type="text" name="name" ng-model="user.name" required)
       .form-group(ng-class="{ 'has-error': registeration.username.$dirty && registration.username.$invalid }")
@@ -21,16 +24,6 @@ block body
         label(for="password_confirm") Confirm Password
         input.form-control(type="password" name="password_confirm" ng-model="user.password_confirm" registration-password-match="password")
       hr
-      p
-        strong Role
-      label.radio-inline
-        input#producer(type='radio', name='role', value='producer', ng-model="user.role", checked)
-        |  Producer
-      label.radio-inline
-        input#developer(type='radio', name='role', value='developer', ng-model="user.role")
-        |  Developer
-      br
-      br
       button.btn.btn-default(type="submit" ng-disabled="registration.$invalid") Register!
 
     pre user = {{ user | json }}
