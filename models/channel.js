@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
       },
       classMethods: {
         associate: function(models) {
-          // Channel.hasMany(models.Webcast)
+          Channel.hasMany(models.Webcast)
         }
       },
       validate: {
