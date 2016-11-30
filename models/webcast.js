@@ -21,6 +21,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     UserId: {
       type: DataTypes.INTEGER
+    },
+    ChannelId: {
+      type: DataTypes.INTEGER
     }
   },
   {
@@ -29,7 +32,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Webcast.belongsTo(models.User),
-        Webcast.hasOne(models.Channel)
+        Webcast.belongsTo(models.Channel)
       }
     },
     validate: {
