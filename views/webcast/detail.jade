@@ -1,0 +1,10 @@
+extends ../layout.jade
+
+block body
+  if user
+    h1= webcast.name
+
+    pre= webcast.venue
+
+  else
+    h2 Please register or log in.

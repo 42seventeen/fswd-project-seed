@@ -1,0 +1,23 @@
+extends ../layout.jade
+block body
+  h1= title
+
+  if channel
+    div
+      form(method="POST" action="/channels/update/" + channel.id name="update-channel" novalidate)
+        .form-group
+          label(for="name") Name
+          input.form-control#name(type="text" placeholder=channel.name name="name" ng-model="channel.name" required)
+        .form-group
+          label(for="URL") URL
+          input.form-control#URL(type="text" placeholder=channel.URL name="channelURL" ng-model="channel.URL" required)
+        .form-group
+          label(for="serviceID") ServiceID
+          input.form-control#serviceID(type="text" placeholder=channel.serviceID name="channelserviceID" ng-model="channel.serviceID" required)
+        .form-group
+          label(for="note") Notes
+          input.form-control#note(type="text" placeholder=channel.note name="note" ng-model="channel.note")
+        .form-group
+          button.btn.btn-default(type="submit") Update Channel
+
+      pre webcast = {{ channel | json }}
