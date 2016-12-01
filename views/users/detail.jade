@@ -5,9 +5,10 @@ block body
     h1= user.username
 
     pre= user.email
-    pre= user.webcasts
-    //- each user.webcast in user.webcasts
-    //-  li
-    //-    a(href="/webcast/" + user.webcast.id)= user.webcast.title
+    pre= user.Webcasts
+    pre {{ user | json }}
+    each webcast in user.Webcasts
+      li= webcast.title
+    //- li(ng-repeat="Webcast in user.Webcasts") Webcast.name
   else
     h2 Please register or log in.

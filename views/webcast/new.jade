@@ -1,5 +1,6 @@
 extends ../layout.jade
-
+//- | <link rel="stylesheet" type="text/css" href="/public/angular-datepicker.min.css">
+//- script(type="text/javascript" src="/public/angular-datepicker.min.js")
 block body
   if user
     div
@@ -9,8 +10,7 @@ block body
           input.form-control#title(type="text" name="title" ng-model="webcast.title" required)
         .form-group
           label#webcastDate(for="webcastDate") Production Date
-            pre 2016-12-05
-          input.form-control(type="text" name="webcastDate" ng-model="webcast.webcastDate" required)
+          input.form-control(type="date" name="webcastDate" ng-model="webcast.webcastDate" required)
         .form-group
           label#venue(for="venue") Venue
           input.form-control(type="text" name="venue" ng-model="webcast.venue")
@@ -21,22 +21,22 @@ block body
           label#clientEmail(for="clientEmail") Client Email
           input.form-control(type="text" name="clientEmail" ng-model="webcast.clientEmail")
         .form-group
-          p Channel
-          .radio
-            label(for="channelOne")
-              input#channelOne(type='radio', name='channelID', value="1", ng-model="webcast.channelID", checked)
-              | Channel One
-          .radio
-            label(for="channelTwo")
-              input#channelTwo(type='radio', name='channelID', value="2", ng-model="webcast.channelID")
-              | Channel Two
-          .radio.disabled
-            label(for="channelThree")
-              input#channelThree(type='radio', name='channelID', value="3", ng-model="webcast.channelID")
-              | Channel Three
+          p
+            strong Channel
+          for channel in channels
+            .radio
+              label(for=channel.id)
+                input(type='radio', id name=channel.id, value=channel.id, ng-model="webcast.ChannelId")
+                = channel.name
+
         .form-group
-          label(for="UserId") UserId
-            input(type="text" name="UserId" value=user.id  ng-model="webcast.UserId" placeholder=user.id )
+          p
+            strong Producer
+          for user in users
+            .radio
+              label(for=user.id)
+                input(type='radio', id name=user.id, value=user.id, ng-model="webcast.UserId")
+                = user.username
         .form-group
           button.btn.btn-default(type="submit") Create Webcast
 

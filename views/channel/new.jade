@@ -1,8 +1,7 @@
 extends ../layout.jade
-
-h1= title
-
 block body
+  h1= title
+
   if user
     div
       form(method="POST" action="/channels/new" name="create-channel" novalidate)

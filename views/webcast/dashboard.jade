@@ -2,18 +2,23 @@ extends ../layout.jade
 
 block body
   if user
-    if webcasts
-      h2 List of Coming Webcasts
-      ul
-        each webcast in webcasts
-          li
-            strong= webcast.title
-            br
-            = webcast.venue
-    else
-      p No webcast created yet
-
-    pre= webcast
+    h2 List of Coming Webcasts
+    pre {{ webcasts | json }}
+    ul
+      each webcast in webcasts
+        li
+          strong= webcast.title
+          = webcast.webcastDate
+          br
+          | Venue:&nbsp;
+          = webcast.venue
+          |  |&nbsp;
+          | Channel:&nbsp;
+          = webcast.Channel.name
+          |  |&nbsp;
+          | Producer:&nbsp;
+          = webcast.User.username
+          //- = webcast.user.username
 
   else
     | Please Login or creat an account.
