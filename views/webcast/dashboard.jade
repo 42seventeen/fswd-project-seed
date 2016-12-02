@@ -7,7 +7,9 @@ block body
     ul
       each webcast in webcasts
         li
-          strong= webcast.title
+          a(href="/webcast/detail/" + webcast.id)
+            strong= webcast.title
+          | &nbsp;
           = webcast.webcastDate
           br
           | Venue:&nbsp;
