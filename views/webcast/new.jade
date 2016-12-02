@@ -26,17 +26,30 @@ block body
           for channel in channels
             .radio
               label(for=channel.id)
-                input(type='radio', id name=channel.id, value=channel.id, ng-model="webcast.ChannelId")
+                input(type='radio', id=channel.id, name="ChannelId" value=channel.id, ng-model="webcast.ChannelId")
                 = channel.name
 
         .form-group
           p
             strong Producer
-          for user in users
+          for producer in producers
             .radio
-              label(for=user.id)
-                input(type='radio', id name=user.id, value=user.id, ng-model="webcast.UserId")
-                = user.username
+              label(for=producer.id)
+                input(type='radio', id=producer.id, name="UserId", value=producer.id, ng-model="webcast.UserId")
+                strong= producer.name
+                | &nbsp;
+                = producer.role
+        .form-group
+          p
+            strong Developer
+          for developer in developers
+            .radio
+              label(for=developer.id)
+                input(type='radio', id=developer.id, name="UserId", value=developer.id, ng-model="webcast.UserId")
+                strong= developer.name
+                | &nbsp;
+                = developer.role
+
         .form-group
           button.btn.btn-default(type="submit") Create Webcast
 
