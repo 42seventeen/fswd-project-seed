@@ -4,6 +4,9 @@ var bcrypt = require('bcrypt');
 
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
+    name: {
+      type: DataTypes.STRING
+    },
     username: {
       type: DataTypes.STRING,
       unique: true
@@ -24,6 +27,9 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true,
         notEmpty: true
       }
+    },
+    role: {
+      type: DataTypes.STRING
     }
   },
     {
