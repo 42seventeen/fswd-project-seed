@@ -6,13 +6,23 @@ block body
 
   div
     form(method="POST" action="/users/register" name="registration" novalidate)
-      //- .form-group
+      .form-group
         label(for="name") Name
         input.form-control(type="text" name="name" ng-model="user.name" required)
       .form-group(ng-class="{ 'has-error': registeration.username.$dirty && registration.username.$invalid }")
         label(for="username") Username
         input.form-control(type="text" name="username" ng-model="user.username" required unique-username)
         p(ng-show="registration.username.$error.uniqueUsername") Username must be unique.
+      .form-group
+        p:strong Role
+        .radio
+          label(for="Producer")
+            input(type='radio', id="Producer", name="role", value="Producer", ng-model="user.role")
+            | Producer
+        .radio
+          label(for="Developer")
+            input(type='radio', id="Developer", name="role", value="Developer", ng-model="user.role")
+            | Developer
       .form-group(ng-class="{ 'has-error': registration.email.$dirty && registration.email.$invalid }")
         label(for="email") Email Address
         input.form-control(type="email" name="email" ng-model="user.email" required)
