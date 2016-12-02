@@ -25,6 +25,12 @@ module.exports = {
       clientEmail: {
         type: Sequelize.STRING
       },
+      UserId: {
+        type: Sequelize.INTEGER
+      },
+      ChannelId: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -32,9 +38,6 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      UserId: {
-        type: Sequelize.INTEGER
       }
     });
   },
