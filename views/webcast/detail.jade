@@ -2,9 +2,57 @@ extends ../layout.jade
 
 block body
   if user
-    h1= webcast.name
+    h1
+      span.small Webcast Title
+      br
+      = webcast.title
+    ul
+      li
+        strong Date
+        -function prettyDate(dateString){
+          //if it's already a date object and not a string you don't need this line:
+          -var date = new Date(dateString);
+          -var d = date.getDate();
+          -var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+          -var m = monthNames[date.getMonth()];
+          -var y = date.getFullYear();
+          -return m+', '+d+' '+y;
+        -}
+        | &nbsp;
+        | #{prettyDate(webcast.webcastDate)}
 
-    pre= webcast.venue
+        li
+          strong Venue
+          | &nbsp;
+          = webcast.venue
+          li
+            strong Channel
+            | &nbsp;
+            = webcast.Channel.name
+
+    .col-md-6.col-xs-12
+      h2 Channel Preview
+      #Container(style='padding-bottom:56.25%; position:relative; display:block; width: 100%')
+        iframe#UstreamIframe(width='100%', height='100%', src='http://www.ustream.tv/embed/#{webcast.Channel.serviceID}?html5ui', frameborder='0', style='position:absolute; top:0; left: 0')
+
+
+    .col-md-6.col-xs-12
+      h2 Embed Code
+      pre
+        | &lt;div id=&quot;Container&quot;
+        |    style=&quot;
+        |     padding-bottom:56.25%;
+        |     position:relative;
+        |     display:block;
+        |     width: 100%&quot;&gt;
+        |   &lt;iframe
+        |     id=&quot;UstreamIframe&quot;
+        |     width=&quot;100%&quot; height=&quot;100%&quot;
+        |     src=&quot;http://www.ustream.tv/embed/#{webcast.Channel.serviceID}?html5ui&quot;
+        |     frameborder=&quot;0&quot;
+        |     style=&quot;position:absolute; top:0; left: 0&quot;&gt;
+        |   &lt;/iframe&gt;
+        | &lt;/div&gt;
 
   else
     h2 Please register or log in.
