@@ -2,13 +2,19 @@ extends ../layout.jade
 
 block body
   if user
-    h1= user.username
+    h1= userDetail.name
+    p Contact: #{userDetail.email}
 
-    pre= user.email
-    pre= user.Webcasts
-    pre {{ user | json }}
-    each webcast in user.Webcasts
-      li= webcast.title
-    //- li(ng-repeat="Webcast in user.Webcasts") Webcast.name
+    h2 Lead #{userDetail.role} on:
+
+    if userDetail.Webcasts
+      each webcast in userDetail.Webcasts
+        li= webcast.title
+
+    else if devscasts
+      p Lead Developer on:
+      ul
+      each devscast in devscasts
+        li= devscast.title
   else
     h2 Please register or log in.

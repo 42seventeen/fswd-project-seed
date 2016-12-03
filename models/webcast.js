@@ -22,6 +22,9 @@ module.exports = function(sequelize, DataTypes) {
     UserId: {
       type: DataTypes.INTEGER
     },
+    devId: {
+      type: DataTypes.INTEGER
+    },
     ChannelId: {
       type: DataTypes.INTEGER
     }

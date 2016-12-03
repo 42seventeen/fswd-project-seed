@@ -44,8 +44,8 @@ block body
             strong Developer
           for developer in developers
             .radio
-              label(for=developer.id)
-                input(type='radio', id=developer.id, name="UserId", value=developer.id, ng-model="webcast.UserId")
+              label(for=developer.id) 
+                input(type='radio', id=developer.id, name="UserId", value=developer.id, ng-model="webcast.devId")
                 strong= developer.name
                 | &nbsp;
                 = developer.role
