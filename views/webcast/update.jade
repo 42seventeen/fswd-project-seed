@@ -1,0 +1,64 @@
+extends ../layout.jade
+block body
+  if user
+    div
+      h1  Updateing #{webcast.title}
+      form(method="POST" action="/webcast/update/" + webcast.webcast_id name="update-webcast")
+        .form-group
+          label(for="title") Title
+          input.form-control#title(type="text" name="title" value=webcast.title required)
+        .form-group
+          label#webcastDate(for="webcastDate") Production Date
+          input.form-control(type="date" name="webcastDate" value="webcast.webcastDate" required)
+        .form-group
+          label#venue(for="venue") Venue
+          input.form-control(type="text" name="venue" value="webcast.venue")
+        .form-group
+          label#clientName(for="clientName") Client Name
+          input.form-control(type="text" name="clientName" value="webcast.clientName")
+        .form-group
+          label#clientEmail(for="clientEmail") Client Email
+          input.form-control(type="text" name="clientEmail" value="webcast.clientEmail")
+        .form-group
+          p
+            strong Channel
+          for channel in channels
+            .radio
+              label(for=channel.name)
+                if (channel.id === webcast.ChannelId)
+                  input(type='radio', id=channel.name, name="ChannelId", value=channel.id, checked)
+                else
+                  input(type='radio', id=channel.name, name="ChannelId", value=channel.id)
+                = channel.name
+
+        .form-group
+          p
+            strong Producer
+          for producer in producers
+            .radio
+              label(for=producer.name)
+                if (producer.id === webcast.UserId)
+                  input(type='radio', id=producer.name, name="UserId", value=producer.id, checked)
+                else
+                  input(type='radio', id=producer.name, name="UserId", value=producer.id)
+                strong= producer.name
+                | &nbsp;
+                = producer.role
+        .form-group
+          p
+            strong Developer
+          for developer in developers
+            .radio
+              label(for=developer.name)
+                if (developer.id === webcast.devId)
+                  input(type='radio', id=developer.name, name="devId", value=developer.id, checked)
+                else
+                  input(type='radio', id=developer.name, name="devId", value=developer.id)
+                strong= developer.name
+                | &nbsp;
+                = developer.role
+
+        .form-group
+          button.btn.btn-default(type="submit") Update Webcast
+  else
+    h1 Please login
