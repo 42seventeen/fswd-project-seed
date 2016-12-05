@@ -4,20 +4,18 @@ block body
 
   if channel
     div
-      form(method="POST" action="/channels/update/" + channel.id name="update-channel" novalidate)
+      form(method="POST" action="/channels/update/" + channel.id name="update-channel")
         .form-group
           label(for="name") Name
-          input.form-control#name(type="text" placeholder=channel.name name="name" ng-model="channel.name" required)
+          input.form-control#name(type="text" value=channel.name name="name" required)
         .form-group
           label(for="URL") URL
-          input.form-control#URL(type="text" placeholder=channel.URL name="channelURL" ng-model="channel.URL" required)
+          input.form-control#URL(type="text" value=channel.URL name="channelURL" required)
         .form-group
           label(for="serviceID") ServiceID
-          input.form-control#serviceID(type="text" placeholder=channel.serviceID name="channelserviceID" ng-model="channel.serviceID" required)
+          input.form-control#serviceID(type="text" value=channel.serviceID name="channelserviceID" required)
         .form-group
           label(for="note") Notes
-          input.form-control#note(type="text" placeholder=channel.note name="note" ng-model="channel.note")
+          input.form-control#note(type="text" value=channel.note name="note")
         .form-group
           button.btn.btn-default(type="submit") Update Channel
-
-      pre webcast = {{ channel | json }}
