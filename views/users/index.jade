@@ -1,0 +1,14 @@
+extends ../layout.jade
+block body
+  h1=  title
+  ul
+    each user in users
+      li
+        strong= user.name
+        | , #{user.role}
+        br
+        a(href="/channel/detail/" + user.id)
+          |  Detail
+        |  |&nbsp;
+        a(href="/channel/update/" + user.id)
+          |  Edit
