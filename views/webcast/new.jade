@@ -25,8 +25,8 @@ block body
             strong Channel
           for channel in channels
             .radio
-              label(for=channel.id)
-                input(type='radio', id=channel.id, name="ChannelId" value=channel.id, ng-model="webcast.ChannelId")
+              label(for=channel.name)
+                input(type='radio', id=channel.name, name="ChannelId" value=channel.id, ng-model="webcast.ChannelId")
                 = channel.name
 
         .form-group
@@ -34,8 +34,8 @@ block body
             strong Producer
           for producer in producers
             .radio
-              label(for=producer.id)
-                input(type='radio', id=producer.id, name="UserId", value=producer.id, ng-model="webcast.UserId")
+              label(for=producer.name)
+                input(type='radio', id=producer.name, name="UserId", value=producer.id, ng-model="webcast.UserId")
                 strong= producer.name
                 | &nbsp;
                 = producer.role
@@ -44,8 +44,8 @@ block body
             strong Developer
           for developer in developers
             .radio
-              label(for=developer.id) 
-                input(type='radio', id=developer.id, name="UserId", value=developer.id, ng-model="webcast.devId")
+              label(for=developer.name)
+                input(type='radio', id=developer.name, name="devId", value=developer.id, ng-model="webcast.devId")
                 strong= developer.name
                 | &nbsp;
                 = developer.role
