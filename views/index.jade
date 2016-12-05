@@ -1,15 +1,61 @@
 extends ../layout.jade
 
 block body
-  if webcasts
-    h2 List of Coming Webcasts
-    ul
-      each webcast in webcasts
-        li
-          strong= webcast.title
-          br
-          = webcast.venue
-  else
-    p No webcast created yet
+  include ../_includes/prettyDate.jade
+  if user
+    h1 Dashboard
+    .col-md-6.col-xs-12
+      h2 Webcasts
+      hr
+      h3 Scheduled
+      ul
+        each webcast in webcasts
+          li
+            a(href="/webcast/detail/" + webcast.id)
+              strong= webcast.title
+              |  &rarr;
+            br
+            | #{prettyDate(webcast.webcastDate)}
+            |  |
+            |  Producer:&nbsp;
+            = webcast.User.name
+            //- = webcast.user.username
+      h3 Past Webcasts
+      ul
+        each pastWebcast in pastWebcasts
+          li
+            a(href="/webcast/detail/" + pastWebcast.id)
+              strong= pastWebcast.title
+            | &nbsp;
+            | #{prettyDate(pastWebcast.webcastDate)}
 
-  pre webcasts = {{ webcasts | json }}
+    .col-md-6.col-xs-12
+      h2 Staff
+      hr
+      h3 Producers
+      ul
+        each producer in producers
+          li
+            a(href="/user/detail/" + producer.id)
+              strong= producer.name
+
+      h3 Developers
+      ul
+        each developer in developers
+          li
+            a(href="/user/detail/" + developer.id)
+              strong= developer.name
+
+    .clearfix
+    h3 Live Feeds
+    hr
+    for channel in channels
+      .col-md-4.col-xs-6
+        #Container(style='padding-bottom:56.25%; position:relative; display:block; width: 100%')
+          iframe#UstreamIframe(width='100%', height='100%', src='http://www.ustream.tv/embed/#{channel.serviceID}?html5ui', frameborder='0', style='position:absolute; top:0; left: 0')
+        p
+          a(href="/user/detail/" + channel.id)
+            strong= channel.name
+
+  else
+    | Please Login or creat an account.
