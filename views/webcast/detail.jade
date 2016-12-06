@@ -7,7 +7,7 @@ block body
       span.small Webcast Title
       br
       = webcast.title
-      a(href="webcasts/update" + webcast.id, class="btn btn-primary pull-right")
+      a(href="webcast/update" + webcast.id, class="btn btn-primary pull-right")
         | Update Webcast
     hr
     .col-md-6.col-xs-12
@@ -32,7 +32,7 @@ block body
           = webcast.clientName
           |  |&nbsp;
           a(href="mailto:"+ webcast.clientEmail)
-            | Email Client
+            | Email #{webcast.clientName}
     .col-md-6.col-xs-12
       h2 Staffing
       ul
@@ -41,15 +41,22 @@ block body
           br
           = webcast.User.name
           br
-          | Contact:&nbsp;
-          = webcast.User.email
+          a(href="users/detail"+ webcast.User.id)
+            | Details
+          |  |&nbsp;
+          a(href="mailto:"+ webcast.User.email)
+            | Email #{webcast.User.name}
+
         li
           strong Developer
           br
           = dev.name
           br
-          | Contact:&nbsp;
-          = dev.email
+          a(href="users/detail"+ dev.id)
+            | Details
+          |  |&nbsp;
+          a(href="mailto:"+ dev.email)
+            | Email #{dev.name}
     .clearfix
     hr
     .col-md-6.col-xs-12

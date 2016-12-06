@@ -5,17 +5,22 @@ block body
     h1= userDetail.name
     p Contact: #{userDetail.email}
 
-    h2 Lead #{userDetail.role} on:
+    h3 Lead #{userDetail.role} for:
 
     if userDetail.Webcasts
       each webcast in userDetail.Webcasts
-        li= webcast.title
+        li
+          a(href="/webcast/detail/" + webcast.id)
+            = webcast.title
+            |  →
 
-    else if devscasts
-      p Lead Developer on:
+    if devscasts
       ul
-      each devscast in devscasts
-        li= devscast.title
-    
+      each webcast in devscasts
+        li
+          a(href="/webcast/detail/" + webcast.id)
+            = webcast.title
+            |  →
+
   else
     h2 Please register or log in.

@@ -1,13 +1,17 @@
 extends ../layout.jade
 block body
+  include ../_includes/prettyDate.jade
   h1=  title
+    a(href="webcasts/new", class="btn btn-primary pull-right")
+      | Add Webcast
   h3 Scheduled Webcasts
+
   ul
     each webcast in webcasts
       li
         strong= webcast.title
         br
-        = webcast.webcastDate
+        | #{prettyDate(webcast.webcastDate)}
         br
         a(href="/webcast/detail/" + webcast.id)
           | Details
@@ -21,7 +25,7 @@ block body
       li
         strong= pastWebcast.title
         br
-        = pastWebcast.webcastDate
+        | #{prettyDate(pastWebcast.webcastDate)}
         br
         a(href="/webcast/detail/" + pastWebcast.id)
           | Details
