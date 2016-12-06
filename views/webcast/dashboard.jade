@@ -6,7 +6,10 @@ block body
     h1 Dashboard
     .col-md-6.col-xs-12
       h2 Webcasts
+        a(href="/webcast/new", class="btn btn-primary pull-right")
+          | Add Webcast
       hr
+
       h3 Scheduled
       ul
         each webcast in webcasts
@@ -31,23 +34,27 @@ block body
 
     .col-md-6.col-xs-12
       h2 Staff
+        a(href="/users/register", class="btn btn-primary pull-right")
+          | Add Staff
       hr
       h3 Producers
       ul
         each producer in producers
           li
-            a(href="/user/detail/" + producer.id)
+            a(href="/users/detail/" + producer.id)
               strong= producer.name
 
       h3 Developers
       ul
         each developer in developers
           li
-            a(href="/user/detail/" + developer.id)
+            a(href="/users/detail/" + developer.id)
               strong= developer.name
 
     .clearfix
     h3 Live Feeds
+      a(href="/channels/new", class="btn btn-primary pull-right")
+        | Add channel
     hr
     for channel in channels
       .col-md-4.col-xs-6

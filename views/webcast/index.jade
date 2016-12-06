@@ -1,0 +1,30 @@
+extends ../layout.jade
+block body
+  h1=  title
+  h3 Scheduled Webcasts
+  ul
+    each webcast in webcasts
+      li
+        strong= webcast.title
+        br
+        = webcast.webcastDate
+        br
+        a(href="/webcast/detail/" + webcast.id)
+          | Details
+        |  |&nbsp;
+        a(href="/webcast/update/" + webcast.id)
+          | Update
+
+  h3 Past Webcasts
+  ul
+    each pastWebcast in pastWebcasts
+      li
+        strong= pastWebcast.title
+        br
+        = pastWebcast.webcastDate
+        br
+        a(href="/webcast/detail/" + pastWebcast.id)
+          | Details
+        |  |&nbsp;
+        a(href="/webcast/update/" + pastWebcast.id)
+          | Update

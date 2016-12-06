@@ -7,7 +7,9 @@ block body
       span.small Webcast Title
       br
       = webcast.title
-      //- p.intro= webcast.description
+      a(href="webcasts/update" + webcast.id, class="btn btn-primary pull-right")
+        | Update Webcast
+    hr
     .col-md-6.col-xs-12
       h2 Event Details
       ul
@@ -24,6 +26,13 @@ block body
           strong Channel
           | &nbsp;
           = webcast.Channel.name
+        li
+          strong Client Contact
+          br
+          = webcast.clientName
+          |  |&nbsp;
+          a(href="mailto:"+ webcast.clientEmail)
+            | Email Client
     .col-md-6.col-xs-12
       h2 Staffing
       ul
