@@ -7,8 +7,8 @@ block body
         strong= user.name
         | , #{user.role}
         br
-        a(href="/channel/detail/" + user.id)
+        a(href="/users/detail/" + user.id)
           |  Detail
         |  |&nbsp;
-        a(href="/channel/update/" + user.id)
+        a(href="/users/update/" + user.id)
           |  Edit
