@@ -5,8 +5,8 @@ block body
     each channel in channels
       li
         strong= channel.name
-        a(href="/channel/detail/" + channel.id)
+        a(href="/channels/detail/" + channel.id)
           |  Detail
         |  |&nbsp;
-        a(href="/channel/update/" + channel.id)
+        a(href="/channels/update/" + channel.id)
           |  Edit
