@@ -40,6 +40,28 @@ module.exports = function(sequelize, DataTypes) {
     },
     validate: {
       // Validation stuff to come later
+    },
+    scopes: {
+      scheduled: {
+        where: {
+          webcastDate: {
+            $gte: new Date()
+          }
+        }
+      },
+      past: {
+        where: {
+          webcastDate: {
+            $lt: new Date()
+          }
+        }
+      },
+      datesASC: {
+        order: '"webcastDate" ASC'
+      },
+      datesDESC: {
+        order: '"webcastDate" DESC'
+      }
     }
   });
   return Webcast;

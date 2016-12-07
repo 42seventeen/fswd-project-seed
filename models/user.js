@@ -44,6 +44,21 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     validate: {
+    },
+    scopes: {
+      devs: {
+        where: {
+          role: 'Developer'
+        }
+      },
+      producers: {
+        where: {
+          role: 'Producer'
+        }
+      },
+      alphabetize: {
+        order: '"name" ASC'
+      },
     }
   });
   return User;
