@@ -3,57 +3,65 @@ extends ../layout.jade
 block body
   include ../_includes/prettyDate.jade
   if user
-    h1 Dashboard
+    //-h1 Dashboard
     .col-md-6.col-xs-12
-      h2 Webcasts
-        br
-        small
-          a(href="/webcast/")
-            | View All
-          | &emsp;
-          a(href="/webcast/new")
-            | Add Webcast
+      .panel.panel-default
+        .panel-heading
+          h4 Webcasts
+            .pull-right
+              a(href="/webcast/" class="btn btn-primary btn-xs")
+                | View All
+              | &emsp;
+              a(href="/webcast/new" class="btn btn-primary btn-xs")
+                | Add Webcast
+        .panel-body
+          h3 Scheduled
+          ul
+            each webcast in webcasts
+              li
+                a(href="/webcast/detail/" + webcast.id)
+                  strong= webcast.title
+                  |  &rarr;
+                br
+                | #{prettyDate(webcast.webcastDate)}
+                |  |
+                |  Producer:&nbsp;
+                = webcast.User.name
 
-      h3 Scheduled
-      ul
-        each webcast in webcasts
-          li
-            a(href="/webcast/detail/" + webcast.id)
-              strong= webcast.title
-              |  &rarr;
-            br
-            | #{prettyDate(webcast.webcastDate)}
-            |  |
-            |  Producer:&nbsp;
-            = webcast.User.name
-            //- = webcast.user.username
-      h3 Past Webcasts
-      ul
-        each pastWebcast in pastWebcasts
-          li
-            a(href="/webcast/detail/" + pastWebcast.id)
-              strong= pastWebcast.title
-            | &nbsp;
-            | #{prettyDate(pastWebcast.webcastDate)}
+          h4 Past Webcasts
+          ul
+            each pastWebcast in pastWebcasts
+              li
+                a(href="/webcast/detail/" + pastWebcast.id)
+                  strong= pastWebcast.title
+                | &nbsp;
+                | #{prettyDate(pastWebcast.webcastDate)}
 
     .col-md-6.col-xs-12
-      h2 Staff
-        a(href="/users/register", class="btn btn-primary pull-right")
-          | Add Staff
-      hr
-      h3 Producers
-      ul
-        each producer in producers
-          li
-            a(href="/users/detail/" + producer.id)
-              strong= producer.name
+      .panel.panel-default
+        .panel-heading
+          h4 Staff
+            .pull-right
+              a(href="/users/", class="btn btn-primary btn-xs")
+                | View All
+              | &emsp;
+              a(href="/users/register", class="btn btn-primary btn-xs")
+                | Add Staff
+        .panel-body
 
-      h3 Developers
-      ul
-        each developer in developers
-          li
-            a(href="/users/detail/" + developer.id)
-              strong= developer.name
+          h3 Producers
+          ul
+            each producer in producers
+              li
+                a(href="/users/detail/" + producer.id)
+                  strong= producer.name
+
+          h3 Developers
+          ul
+            each developer in developers
+              li
+                a(href="/users/detail/" + developer.id)
+                  strong= developer.name
 
     .clearfix
     h3 Live Feeds
@@ -65,7 +73,7 @@ block body
         #Container(style='padding-bottom:56.25%; position:relative; display:block; width: 100%')
           iframe#UstreamIframe(width='100%', height='100%', src='http://www.ustream.tv/embed/#{channel.serviceID}?html5ui', frameborder='0', style='position:absolute; top:0; left: 0')
         p
-          a(href="/user/detail/" + channel.id)
+          a(href="/channels/detail/" + channel.id)
             strong= channel.name
 
   else

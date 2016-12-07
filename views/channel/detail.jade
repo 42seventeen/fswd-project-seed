@@ -4,11 +4,15 @@ block body
   include ../_includes/prettyDate.jade
   h1= title
     small.pull-right
-      a(href="/channels/update/" + channel.id)
-        | Edit
+      a(href="/channels/update/" + channel.id, class='btn btn-primary')
+        | Edit Channel
+  p
+    strong Notes:
+    |  #{channel.note}
 
-  h3
-    small Webcasts Scheduled for this lChannel
+  hr
+    
+  h4 Webcasts Scheduled for this Channel
   ul
     each webcast in webcasts
       li

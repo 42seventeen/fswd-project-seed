@@ -2,7 +2,9 @@ extends ../layout.jade
 block body
   if user
     div
-      h1  Updateing #{webcast.title}
+      h1
+        small Updating
+        | #{webcast.title}
       form(method="POST" action="/webcast/update/" + webcast.id name="update-webcast")
         .form-group
           label(for="title") Title
@@ -60,5 +62,9 @@ block body
 
         .form-group
           button.btn.btn-default(type="submit") Update Webcast
+          | &emsp;
+          a(href='/webcast/detail/'+ webcast.id, class="text-danger")
+            strong Cancel
+          span(class='text-muted small')  Go back to "#{webcast.title}" detail page.
   else
     h1 Please login
