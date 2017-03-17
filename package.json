@@ -15,13 +15,13 @@
     "dev_db_connect": "psql fswd_seed_development",
     "test_db_create": "createdb fswd_seed_test",
     "sequelize": "sequelize",
-    "postinstall": "jspm install",
+    /*"postinstall": "jspm install",
     "karma": "karma start",
     "mocha": "istanbul cover -x '**/models/index.js' _mocha -- -R spec test/server/*-test.js",
     "webdriver": "webdriver-manager update && webdriver-manager start",
     "test-server": "NODE_ENV=test PORT=8008 nodemon ./lib/server.js",
     "protractor-backend": "npm run webdriver & npm run test-server",
-    "protractor": "protractor ./protractor.config.js"
+    "protractor": "protractor ./protractor.config.js"*/
   },
   "keywords": [
     "fswd",
