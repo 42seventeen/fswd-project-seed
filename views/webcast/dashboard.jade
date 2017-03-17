@@ -10,10 +10,12 @@ block body
           h4 Webcasts
             .pull-right
               a(href="/webcast/" class="btn btn-primary btn-xs")
-                | View All
+                span.glyphicon.glyphicon-eye-open
+                |  View All
               | &emsp;
               a(href="/webcast/new" class="btn btn-primary btn-xs")
-                | Add Webcast
+                span.glyphicon.glyphicon-plus
+                |  Add Webcast
         .panel-body
           h3 Scheduled
           ul
@@ -43,10 +45,12 @@ block body
           h4 Staff
             .pull-right
               a(href="/users/", class="btn btn-primary btn-xs")
-                | View All
+                span.glyphicon.glyphicon-eye-open
+                |  View All
               | &emsp;
               a(href="/users/register", class="btn btn-primary btn-xs")
-                | Add Staff
+                span.glyphicon.glyphicon-plus
+                |  Add Staff
         .panel-body
 
           h3 Producers
@@ -65,8 +69,9 @@ block body
 
     .clearfix
     h3 Live Feeds
-      a(href="/channels/new", class="btn btn-primary pull-right")
-        | Add channel
+      a(href="/channels/new", class="btn btn-primary btn-xs pull-right")
+        span.glyphicon.glyphicon-plus
+        |  Add channel
     hr
     for channel in channels
       .col-md-4.col-xs-6

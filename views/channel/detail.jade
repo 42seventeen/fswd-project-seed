@@ -5,13 +5,19 @@ block body
   h1= title
     small.pull-right
       a(href="/channels/update/" + channel.id, class='btn btn-primary')
-        | Edit Channel
+        span.glyphicon.glyphicon-edit
+        | &emsp;Edit Channel
+      | &emsp;
+      a(href=channel.url, target="_blank" class='btn btn-primary')
+        span.glyphicon.glyphicon-new-window
+        | &emsp;View Channel Webpage
+
   p
     strong Notes:
     |  #{channel.note}
 
   hr
-    
+
   h4 Webcasts Scheduled for this Channel
   ul
     each webcast in webcasts
