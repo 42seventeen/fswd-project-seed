@@ -14,7 +14,7 @@
     "dev_db_create": "createdb fswd_seed_development && sequelize db:migrate",
     "dev_db_connect": "psql fswd_seed_development",
     "test_db_create": "createdb fswd_seed_test",
-    "sequelize": "sequelize",
+    "sequelize": "sequelize"//,
     /*"postinstall": "jspm install",
     "karma": "karma start",
     "mocha": "istanbul cover -x '**/models/index.js' _mocha -- -R spec test/server/*-test.js",
