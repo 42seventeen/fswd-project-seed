@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Project seed for Intro to Full Stack Web Development",
   "main": "lib/server.js",
+  "engines": {
+    "node": "6.6.0",
+    "npm": "3.10.3"
+  },
   "scripts": {
     "test": "npm run karma && npm run mocha",
     "start": "nodemon ./lib/server.js",
