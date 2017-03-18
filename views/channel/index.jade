@@ -1,10 +1,18 @@
 extends ../layout.jade
 block body
   h1=  title
-  ul
-    each channel in channels
-      li
+  h3 Live Feeds
+    a(href="/channels/new", class="btn btn-primary btn-xs pull-right")
+      span.glyphicon.glyphicon-plus
+      |  Add channel
+  hr
+  for channel in channels
+    .col-md-4.col-xs-6
+      #Container(style='padding-bottom:56.25%; position:relative; display:block; width: 100%')
+        iframe#UstreamIframe(width='100%', height='100%', src='http://www.ustream.tv/embed/#{channel.serviceID}?html5ui', frameborder='0', style='position:absolute; top:0; left: 0')
+      p
         strong= channel.name
+        br
         a(href="/channels/detail/" + channel.id)
           |  Detail
         |  |&nbsp;
