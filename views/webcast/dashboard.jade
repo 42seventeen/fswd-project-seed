@@ -25,8 +25,10 @@ block body
                   strong= webcast.title
                   |  &rarr;
                 br
-                | #{prettyDate(webcast.webcastDate)}
-                |  |
+                | On&nbsp;
+                = webcast.Channel.name
+                |  #{prettyDate(webcast.webcastDate)}
+                br
                 |  Producer:&nbsp;
                 = webcast.User.name
 
