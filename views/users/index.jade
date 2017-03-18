@@ -5,7 +5,7 @@ block body
     each user in users
       li
         strong= user.name
-        | , #{user.role}
         br
+        | #{user.role} -
         a(href="/users/detail/" + user.id)
-          |  Detail Page
+          |  Details

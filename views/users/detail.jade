@@ -1,26 +1,21 @@
 extends ../layout.jade
 
 block body
-  if user
-    h1= userDetail.name
-    p Contact: #{userDetail.email}
 
-    h3 Lead #{userDetail.role} for:
+  h1= userDetail.name
+  p: strong Contact:
+  ul
+    li Email: #{userDetail.email}
+    li Office: 244-567-0832
+    li Mobile: 123-432-5678
 
-    if userDetail.Webcasts
-      each webcast in userDetail.Webcasts
-        li
-          a(href="/webcast/detail/" + webcast.id)
-            = webcast.title
-            |  →
+  p: strong Lead #{userDetail.role} For:
 
-    if devscasts
-      ul
-      each webcast in devscasts
-        li
-          a(href="/webcast/detail/" + webcast.id)
-            = webcast.title
-            |  →
+  if userDetail.Webcasts
+    each webcast in userDetail.Webcasts
+      li: a(href="/webcast/detail/" + webcast.id) #{webcast.title} →
 
-  else
-    h2 Please register or log in.
+  if devscasts
+    ul
+    each webcast in devscasts
+      li: a(href="/webcast/detail/" + webcast.id) #{webcast.title} →

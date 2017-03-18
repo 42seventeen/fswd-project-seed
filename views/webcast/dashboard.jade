@@ -22,24 +22,22 @@ block body
             each webcast in webcasts
               li
                 a(href="/webcast/detail/" + webcast.id)
-                  strong= webcast.title
-                  |  &rarr;
+                  strong #{webcast.title} &rarr;
                 br
-                | On&nbsp;
-                = webcast.Channel.name
-                |  #{prettyDate(webcast.webcastDate)}
+                | On #{webcast.Channel.name}, #{prettyDate(webcast.webcastDate)}
                 br
-                |  Producer:&nbsp;
-                = webcast.User.name
+                |  Producer: #{webcast.User.name}
+                br
+                br
 
-          h4 Past Webcasts
+          h4 Recent Webcasts
           ul
             each pastWebcast in pastWebcasts
               li
                 a(href="/webcast/detail/" + pastWebcast.id)
                   strong= pastWebcast.title
-                | &nbsp;
-                | #{prettyDate(pastWebcast.webcastDate)}
+                br
+                span(class="text-muted") #{prettyDate(pastWebcast.webcastDate)}
 
     .col-md-6.col-xs-12
       .panel.panel-default
